@@ -1,3 +1,20 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :dealers
+  namespace :api do
+    namespace :v1 do
+      resources :dealers, only: %i[create] do
+        collection do
+          get 'by_code'
+        end
+        member do
+          post 'start'
+        end
+        
+        resources :snacks
+      end
+      resources :people
+      resources :movies
+    end
+  end
 end
