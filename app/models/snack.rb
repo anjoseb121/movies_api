@@ -1,4 +1,5 @@
-class Snack < ApplicationRecord
+# frozen_string_literal: true
 
-	belongs_to :dealer
+class Snack < ApplicationRecord
+  belongs_to :dealer
 end

@@ -1,4 +1,5 @@
-class Dealer < ApplicationRecord
+# frozen_string_literal: true
 
-	has_many :snacks
+class Dealer < ApplicationRecord
+  has_many :snacks
 end

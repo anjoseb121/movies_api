@@ -1,8 +1,7 @@
-class SnacksController < ApplicationController
+# frozen_string_literal: true
 
-	def index
-	end
-	
-	def show
-	end
+class SnacksController < ApplicationController
+  def index; end
+
+  def show; end
 end

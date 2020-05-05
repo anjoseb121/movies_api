@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class PersonTest < ActiveSupport::TestCase
+class MoviePersonTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

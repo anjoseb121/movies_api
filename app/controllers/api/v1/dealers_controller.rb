@@ -1,5 +1,5 @@
-class DealersController < ApplicationController
+# frozen_string_literal: true
 
-	def create
-	end
+class DealersController < ApplicationController
+  def create; end
 end
