@@ -2,6 +2,11 @@ module Api
 	module V1
 		class MoviesController < ApplicationController
 
+			def index
+				movies = Movie.all
+				render json: movies
+			end
+
 			def show
 				@movie = Movie.find(params[:id])
 				render json: @movie
@@ -39,7 +44,7 @@ module Api
 			private
 
 			def permit_params
-				params.require(:movie).permit(:title)
+				params.require(:movie).permit(:title, :cover)
 			end
 		end
 	end

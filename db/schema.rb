@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,49 +10,72 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_505_003_709) do
-  create_table 'dealers', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+ActiveRecord::Schema.define(version: 2020_05_06_234348) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table 'movie_people', force: :cascade do |t|
-    t.integer 'person_id', null: false
-    t.integer 'movie_id', null: false
-    t.string 'role', default: 'actor'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['movie_id'], name: 'index_movie_people_on_movie_id'
-    t.index ['person_id'], name: 'index_movie_people_on_person_id'
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table 'movies', force: :cascade do |t|
-    t.string 'title'
-    t.date 'year'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "dealers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'people', force: :cascade do |t|
-    t.string 'identification'
-    t.string 'name'
-    t.string 'last_name'
-    t.string 'nickname'
-    t.string 'phone'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "movie_people", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "movie_id", null: false
+    t.string "role", default: "actor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_movie_people_on_movie_id"
+    t.index ["person_id"], name: "index_movie_people_on_person_id"
   end
 
-  create_table 'snacks', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.integer 'dealer_id'
-    t.index ['dealer_id'], name: 'index_snacks_on_dealer_id'
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.date "year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key 'movie_people', 'movies'
-  add_foreign_key 'movie_people', 'people'
-  add_foreign_key 'snacks', 'dealers'
+  create_table "people", force: :cascade do |t|
+    t.string "identification"
+    t.string "name"
+    t.string "last_name"
+    t.string "nickname"
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "snacks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "dealer_id"
+    t.index ["dealer_id"], name: "index_snacks_on_dealer_id"
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "movie_people", "movies"
+  add_foreign_key "movie_people", "people"
+  add_foreign_key "snacks", "dealers"
 end
